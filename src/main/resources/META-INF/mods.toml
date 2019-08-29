@@ -1,0 +1,19 @@
+modLoader="javafml"
+loaderVersion="[10,)"
+##issueTrackerURL="no"
+logoFile="logo.png"
+[[mods]]
+modId="shameless_mobs"
+version="1.0.0"
+displayName="Shameless Mobs"
+##displayURL="no"
+authors="robertx22"
+description='''
+Turn Minecraft Into a hack and slash looter!
+'''
+[[dependencies.mmorpg]]
+    modId="forge"
+    mandatory=true
+    versionRange="[28.0.45,)"
+    ordering="NONE"
+    side="BOTH"
