@@ -10,9 +10,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class AntiMobFarm {
 
-    public static int ANTI_MOB_FARM_MOB_CLEAR_COUNT_EVERY_X_MINUTES = 0;
-    public static int ANTI_MOB_FARM_MOB_COUNT_NEEDED = 0;
-
     @SubscribeEvent
     public static void onSpawn(LivingSpawnEvent.CheckSpawn event) {
 
@@ -23,12 +20,8 @@ public class AntiMobFarm {
                 IChunk ichunk = en.world.getChunk(en.getPosition());
                 if (ichunk instanceof Chunk) {
                     Chunk chunk = (Chunk) ichunk;
-
-                    ChunkCap.IChunkCap cap = chunk.getCapability(ChunkCap.Data)
-                            .orElse(new ChunkCap.DefaultImpl());
-
-                    cap.onMobSpawn(en, event);
-
+                    chunk.getCapability(ChunkCap.Data)
+                            .ifPresent(x -> x.onMobSpawn(en, event));
                 }
             }
         } catch (Exception e) {

@@ -1,3 +1,9 @@
+1.0.2
+disabled anti mob farm module by default, seems to be causing server freeze
+added knockback resistant mobs module!
+1.0.1
+tweaks to fall resistant mobs
+
 1.0.0
 Release!
 

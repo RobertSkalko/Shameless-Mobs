@@ -1,7 +1,7 @@
 package com.robertx22.shameless_mobs.caps;
 
+import com.robertx22.shameless_mobs.Config;
 import com.robertx22.shameless_mobs.Main;
-import com.robertx22.shameless_mobs.parts.AntiMobFarm;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.server.MinecraftServer;
@@ -36,7 +36,7 @@ public class ChunkCap {
     public static class EventHandler {
 
         @SubscribeEvent
-        public static void onEntityConstruct(AttachCapabilitiesEvent<Chunk> event) {
+        public static void onChunkConstruct(AttachCapabilitiesEvent<Chunk> event) {
             event.addCapability(RESOURCE, new Provider());
         }
 
@@ -78,7 +78,7 @@ public class ChunkCap {
         }
 
         private boolean shouldPreventSpawns() {
-            return this.mobSpawns > AntiMobFarm.ANTI_MOB_FARM_MOB_COUNT_NEEDED;
+            return this.mobSpawns > Config.INSTANCE.ANTI_MOB_FARM_MOB_COUNT_NEEDED.get();
         }
 
         public static int serverTimeToMinutes(MinecraftServer server) {
@@ -94,8 +94,10 @@ public class ChunkCap {
                 this.timeOfFirstSpawn = 0;
             }
 
-            if (currentTime >= AntiMobFarm.ANTI_MOB_FARM_MOB_CLEAR_COUNT_EVERY_X_MINUTES) {
-                if (this.timeOfFirstSpawn + AntiMobFarm.ANTI_MOB_FARM_MOB_CLEAR_COUNT_EVERY_X_MINUTES >= currentTime) {
+            if (currentTime >= Config.INSTANCE.ANTI_MOB_FARM_MOB_CLEAR_COUNT_EVERY_X_MINUTES
+                    .get()) {
+                if (this.timeOfFirstSpawn + Config.INSTANCE.ANTI_MOB_FARM_MOB_CLEAR_COUNT_EVERY_X_MINUTES
+                        .get() >= currentTime) {
                     this.mobSpawns = 0;
                 }
             }

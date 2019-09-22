@@ -146,8 +146,6 @@ jar {
 
 
 
-def myCurseRelatons = {
-}
 
 
 curseforge {
@@ -163,7 +161,6 @@ curseforge {
         releaseType = "${curse_release}"
         changelogType = 'text'
         changelog = file('CHANGELOG.txt')
-        addGameVersion("Forge")
-        relations(myCurseRelatons)        
+        addGameVersion("Forge")              
     }
 }

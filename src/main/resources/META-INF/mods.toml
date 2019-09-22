@@ -9,7 +9,7 @@ displayName="Shameless Mobs"
 ##displayURL="no"
 authors="robertx22"
 description='''
-Turn Minecraft Into a hack and slash looter!
+Mobs no longer feel shame.
 '''
 [[dependencies.mmorpg]]
     modId="forge"

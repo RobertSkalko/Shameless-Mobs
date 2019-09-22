@@ -6,6 +6,7 @@ import com.robertx22.shameless_mobs.caps.ChunkCap;
 import com.robertx22.shameless_mobs.parts.AntiMobFarm;
 import com.robertx22.shameless_mobs.parts.FallResistantMobs;
 import com.robertx22.shameless_mobs.parts.FireResistantMobs;
+import com.robertx22.shameless_mobs.parts.KnockbackResistantMobs;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -46,13 +47,11 @@ public class Main {
         if (Config.INSTANCE.ANTI_MOB_FARMS.get()) {
             MinecraftForge.EVENT_BUS.register(AntiMobFarm.class);
         }
+        if (Config.INSTANCE.KNOCKBACK_RESISTANT_MOBS.get()) {
+            MinecraftForge.EVENT_BUS.register(KnockbackResistantMobs.class);
+        }
 
         MinecraftForge.EVENT_BUS.register(this);
-
-        AntiMobFarm.ANTI_MOB_FARM_MOB_CLEAR_COUNT_EVERY_X_MINUTES = Config.INSTANCE.ANTI_MOB_FARM_MOB_CLEAR_COUNT_EVERY_X_MINUTES
-                .get();
-        AntiMobFarm.ANTI_MOB_FARM_MOB_COUNT_NEEDED = Config.INSTANCE.ANTI_MOB_FARM_MOB_COUNT_NEEDED
-                .get();
 
     }
 
